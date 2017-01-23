@@ -14,7 +14,7 @@ class TableContent: UITableViewCell {
     var Todo: Todo?
     
     func configureCell(todo: Todo) {
-        todoLbl.text = todo.title?.localizedCapitalized
+        todoLbl.text = todo.title
         Todo = todo
     }
     
@@ -23,7 +23,6 @@ class TableContent: UITableViewCell {
         
         let todoItem = Todo
         context.delete(todoItem!)
-        print(todoItem!)
         ad.saveContext()
     }
     

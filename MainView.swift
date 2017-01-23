@@ -13,7 +13,6 @@
     
     @IBOutlet weak var inputVeld: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    
     var controllerFetchRequest: NSFetchedResultsController<Todo>!
     
     override func viewDidLoad() {
@@ -28,24 +27,20 @@
     
     @IBAction func submitBtn(_ sender: UIButton) {
         
-        let input = Todo(context: context)
-        input.title = inputVeld.text
-        input.created = NSDate()
-        
-        inputVeld.resignFirstResponder()
-        
-        ad.saveContext()
-        
-        //     fetchRequest()
-        //     self.tableView.reloadData()
-        
-        inputVeld.text = ""
-        
+        if inputVeld.text!.isEmpty {
+            print("no text added")
+        } else {
+            let input = Todo(context: context)
+            input.title = inputVeld.text
+            input.created = NSDate()
+            
+            inputVeld.resignFirstResponder()
+            
+            ad.saveContext()
+            
+            inputVeld.text = ""
+        }
     }
-    
-    
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = controllerFetchRequest.sections {
@@ -56,14 +51,16 @@
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if let sections = controllerFetchRequest.sections {
+            return sections.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableContent", for: indexPath) as! TableContent
         configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
