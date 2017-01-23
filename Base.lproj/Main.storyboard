@@ -52,7 +52,7 @@
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="deleteBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AJ0-5Z-aAs"/>
+                                                        <action selector="deleteBtn:" destination="mUq-7w-jmj" eventType="touchUpInside" id="IRx-Ve-evh"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

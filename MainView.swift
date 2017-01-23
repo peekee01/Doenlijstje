@@ -1,15 +1,15 @@
-//
-//  MainView.swift
-//  Doenlijstje
-//
-//  Created by Pieter Kuijsten on 22/01/2017.
-//  Copyright © 2017 Pieter Kuijsten. All rights reserved.
-//
-
-import UIKit
-import CoreData
-
-class MainView: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
+ //
+ //  MainView.swift
+ //  Doenlijstje
+ //
+ //  Created by Pieter Kuijsten on 22/01/2017.
+ //  Copyright © 2017 Pieter Kuijsten. All rights reserved.
+ //
+ 
+ import UIKit
+ import CoreData
+ 
+ class MainView: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var inputVeld: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -36,24 +36,16 @@ class MainView: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
         
         ad.saveContext()
         
-        fetchRequest()
-        self.tableView.reloadData()
+        //     fetchRequest()
+        //     self.tableView.reloadData()
         
         inputVeld.text = ""
         
     }
     
     
-    @IBAction func deleteBtn(_ sender: UIButton) {
-        let todoItem = Todo(context: context)
-        context.delete(todoItem)
-        print(todoItem)
-        ad.saveContext()
-        
-        fetchRequest()
-        self.tableView.reloadData()
-    }
-
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = controllerFetchRequest.sections {
@@ -104,6 +96,34 @@ class MainView: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
         }
     }
     
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch(type) {
+        case.insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+        case.delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break
+        default:
+            break
+        }
+    }
+    
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         inputVeld.resignFirstResponder()
@@ -115,5 +135,5 @@ class MainView: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
     }
     
     
-}
-
+ }
+ 
