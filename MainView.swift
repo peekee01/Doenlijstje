@@ -9,7 +9,7 @@
  import UIKit
  import CoreData
  
- class MainView: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
+ class MainView: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate,  UITextFieldDelegate {
     
     @IBOutlet weak var inputVeld: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -57,6 +57,7 @@
         return 0
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableContent", for: indexPath) as! TableContent
         configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
@@ -67,13 +68,23 @@
         return 80
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let todoDel = controllerFetchRequest.object(at: indexPath as IndexPath)
+            context.delete(todoDel)
+            ad.saveContext()
+        }
+    }
+    
+    
+    
     func configureCell(cell: TableContent, indexPath: NSIndexPath) {
         let todo = controllerFetchRequest.object(at: indexPath as IndexPath)
         cell.configureCell(todo: todo)
     }
     
     func fetchRequest() {
-        let request: NSFetchRequest<Todo> = Todo.fetchRequest()
+        let request = NSFetchRequest<Todo>(entityName: "Todo")
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
         //  let titleSort = NSSortDescriptor(key: "title", ascending: true)
         

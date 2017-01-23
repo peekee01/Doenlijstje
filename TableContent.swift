@@ -18,9 +18,14 @@ class TableContent: UITableViewCell {
         Todo = todo
     }
     
+    func deleteCell(todo: Todo) {
+        Todo = todo
+        let todoItem = Todo
+        context.delete(todoItem!)
+        ad.saveContext()
+    }
     
     @IBAction func deleteBtn(_ sender: UIButton) {
-        
         let todoItem = Todo
         context.delete(todoItem!)
         ad.saveContext()
