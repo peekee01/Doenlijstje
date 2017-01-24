@@ -26,7 +26,6 @@
     
     
     @IBAction func submitBtn(_ sender: UIButton) {
-        
         if inputVeld.text!.isEmpty {
             print("no text added")
         } else {
@@ -64,6 +63,11 @@
         return cell
     }
     
+    func configureCell(cell: TableContent, indexPath: NSIndexPath) {
+        let todo = controllerFetchRequest.object(at: indexPath as IndexPath)
+        cell.configureCell(todo: todo)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -76,17 +80,9 @@
         }
     }
     
-    
-    
-    func configureCell(cell: TableContent, indexPath: NSIndexPath) {
-        let todo = controllerFetchRequest.object(at: indexPath as IndexPath)
-        cell.configureCell(todo: todo)
-    }
-    
     func fetchRequest() {
         let request = NSFetchRequest<Todo>(entityName: "Todo")
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
-        //  let titleSort = NSSortDescriptor(key: "title", ascending: true)
         
         request.sortDescriptors = [dateSort]
         
@@ -113,7 +109,6 @@
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
         switch(type) {
         case.insert:
             if let indexPath = newIndexPath {
@@ -130,9 +125,6 @@
         }
     }
     
-    
-    
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         inputVeld.resignFirstResponder()
     }
@@ -142,6 +134,8 @@
         return(true)
     }
     
-    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
  }
  

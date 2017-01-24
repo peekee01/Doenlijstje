@@ -23,8 +23,9 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5d9-Em-Oh9">
                                 <rect key="frame" x="0.0" y="160" width="375" height="507"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="sectionIndexBackgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableContent" rowHeight="80" id="mUq-7w-jmj" customClass="TableContent" customModule="Doenlijstje" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
@@ -87,6 +88,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="customCell" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="customCell" value="NO"/>
                                         </userDefinedRuntimeAttributes>
@@ -96,10 +98,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhd-wU-dPg">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhd-wU-dPg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wat moet je nou weer doen?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2N4-UF-Soj" customClass="CustomTextField" customModule="Doenlijstje" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wat moet je nog meer doen?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2N4-UF-Soj" customClass="CustomTextField" customModule="Doenlijstje" customModuleProvider="target">
                                         <rect key="frame" x="8" y="55" width="281" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="rh8-Ny-Rdb"/>
@@ -141,7 +143,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jhd-wU-dPg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9ms-pp-fWL"/>
                             <constraint firstItem="5d9-Em-Oh9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CqC-wE-ToH"/>
